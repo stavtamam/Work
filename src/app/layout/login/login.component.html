@@ -1,0 +1,41 @@
+
+<div class="container">
+  <h1>Login Page</h1>
+  <form [formGroup]="formGroup" (ngSubmit)="logInUser(formGroup.value.username)">
+    <div class="inputs">
+      <div>
+        <dog-input
+          [label]="'User name'"
+          [placeholder]="'✉️'"
+          [hint]="'Your secret user name'"
+          [name]="'User name'"
+          formControlName="username"
+          [validators]="userValidators"
+        ></dog-input>
+      </div>
+      <div>
+        <dog-input
+          [label]="'Password'"
+          [placeholder]="'🔒'"
+          [hint]="'Your secret password'"
+          [name]="'Password'"
+          [type]="'password'"
+          formControlName="password"
+          [validators]="passwordValidators"
+        ></dog-input>
+      </div>
+    </div>
+      <div class="actions">
+        <button mat-raised-button color="primary">{{btn.submit}}</button>
+        <button mat-stroked-button type="button" >{{btn.register}}</button>
+      </div>
+    </form>
+    <div>
+    </div>
+
+</div>
+
+
+
+
+

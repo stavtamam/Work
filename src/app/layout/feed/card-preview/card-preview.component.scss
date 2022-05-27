@@ -1,0 +1,138 @@
+//:host {
+//
+//  .container {
+//    margin: 0 auto;
+//    padding: 5px;
+//    text-align: center;
+//    font-size: 2em;
+//    overflow: scroll;
+//  }
+//
+//  h2 {
+//    margin: 2px;
+//  }
+//
+//  .content-wrapper {
+//    width: 100%;
+//    padding: 10px;
+//    margin: 0 auto;
+//    text-align: center;
+//  }
+//
+//
+//  /*
+//    The modal background (the dark-ish overlay),
+//    which obviously could be a class instead of a form.
+//
+//    For scroll to work as expected, the position is absolute,
+//    as position: fixed would not allow the page to scroll when the screen isn't tall enough.
+//  */
+//
+//    .confirm-modal {
+//      display: block;
+//      pointer-events: none;
+//      transition: opacity 0.5s;
+//      overflow: scroll;
+//
+//      .btn {
+//        width: auto;
+//        margin: auto;
+//        border: none;
+//        cursor: pointer;
+//        float: right;
+//        font-size: 20px;
+//        background-color: inherit;
+//        margin: 3px;
+//        transition: .3s ease-in-out;
+//
+//      }
+//      .btn:hover{
+//        transform: scale(1.3);
+//      }
+//
+//      &::before {
+//        content: "";
+//        display: block;
+//        background-color: rgba(0, 0, 0, 0.4);
+//        position: absolute;
+//        top: 0;
+//        bottom: 0;
+//        left: 0;
+//        right: 0;
+//        min-height: 200px;
+//        z-index: 99;
+//        opacity: 1;
+//        pointer-events: all;
+//      }
+//
+//      .wrap {
+//        position: absolute;
+//        z-index: 99;
+//        top: 50px;
+//        transition: transform 0.75s;
+//        max-width: 90%;
+//        width: 450px;
+//        background-color: #fafafa;
+//        padding: 20px;
+//        left: 50%;
+//        transform: translate(-50%, 0);
+//        box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+//        color: #080808;
+//        border-radius: 5px;
+//      }
+//    }
+//
+//  input:not(:checked) + .confirm-modal, .clicked {
+//    &, & * {
+//      opacity: 0;
+//    }
+//    &::before {
+//      height: 0;
+//      width: 0;
+//    }
+//  }
+//
+//  /* For that cute little fly down effect */
+//  input:not(:checked) + .confirm-modal, form {
+//    transform: translate(-50%, -100px);
+//  }
+//
+//  /* Allow buttons to be clickable. */
+//  .confirm-modal button {
+//    pointer-events: all;
+//  }
+//
+//}
+//
+//
+//
+.container{
+  width: 100vw;
+  height: 100vh;
+  background-color: #0000009e;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  .wrapper {
+    height: 300px;
+    width: 500px;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: auto;
+    position: relative;
+  }
+}
+.clicked{
+  display: block;
+}
+.not{
+  display: none;
+}

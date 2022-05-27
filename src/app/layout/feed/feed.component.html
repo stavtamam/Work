@@ -1,0 +1,10 @@
+<h1>Dog Salon</h1>
+<div class="cardscontainer">
+  <app-feed-list *ngFor="let card of cards" [card]="card"></app-feed-list>
+  <ng-container>
+    <app-card-preview></app-card-preview>
+  </ng-container>
+</div>
+<div class="book-now">
+  <button class="book-now-btn" routerLink="../book-now">Book Now</button>
+</div>

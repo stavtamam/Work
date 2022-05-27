@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "00abd5e8-b486-4db0-b488-dcc1eb21dd98"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -31,6 +34,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -99,13 +103,50 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
           }
         }
       }
-    }
+    },
+    "bruno": {
+      "projectType": "library",
+      "root": "projects/bruno",
+      "sourceRoot": "projects/bruno/src",
+      "prefix": "dog",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/bruno/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/bruno/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/bruno/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bruno/src/test.ts",
+            "tsConfig": "projects/bruno/tsconfig.spec.json",
+            "karmaConfig": "projects/bruno/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+    }}
   },
   "defaultProject": "dogsHaircut"
 }

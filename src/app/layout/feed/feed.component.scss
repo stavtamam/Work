@@ -1,0 +1,29 @@
+h1{
+  text-align: center;
+  font-size: 4em;
+  margin: 2px;
+}
+.cardscontainer{
+  height: 60vh;
+  display: grid;
+  grid-template-columns: repeat(4 , 1fr);
+  place-content: center;
+}
+.book-now-btn{
+  width: 10vw;
+  height: 10vh;
+  font-size: 2em;
+  border: none;
+  background-color: #dcdcdc;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+.book-now-btn:hover{
+  background-color: rgba(220, 220, 220, 0.47);
+}
+.book-now{
+  display: flex;
+  justify-content: right;
+  align-items: end;
+  padding: 20px;
+}

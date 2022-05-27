@@ -1,0 +1,10 @@
+<h1>{{header | titlecase}}</h1>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<dog-date-picker
+  [label]="'Pick a Date'"
+  [hint]="'MM/DD/YYYY'"
+  formControlName="datePick"
+></dog-date-picker>
+</form>
+
+

@@ -1,0 +1,15 @@
+:host {
+
+  mat-card {
+    width: 60%;
+    height: 250px;
+    text-align: center;
+    font-family: 'Zen Loop', cursive;
+    margin: 20px;
+    cursor: pointer;
+  }
+
+  mat-card-subtitle {
+    font-size: 1.2em;
+  }
+}

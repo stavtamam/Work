@@ -1,0 +1,22 @@
+
+<ng-container  *ngIf="card$ | async as current" >
+  <div class="container" [ngClass]="clicked ? 'clicked' : 'not'">
+    <div class="wrapper">
+      <button class="btn" (click)="togglePopUp()">X</button>
+      <h1 class="card-header">{{current.name}}</h1>
+      <div *ngIf="current.price as price">
+        <span> {{price.price | currency:price.currency}}</span>
+      </div>
+      <hr>
+      <span>{{current.description}}</span><br>
+      <button class="btn" routerLink="../book-now">Book Now</button>
+    </div>
+  </div>
+</ng-container>
+
+
+
+
+
+
+
