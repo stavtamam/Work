@@ -8,9 +8,8 @@ import {BehaviorSubject, ReplaySubject} from "rxjs";
 export class FeedService {
   currentCard?:ICard;
   currentCard$= new ReplaySubject<ICard | undefined>(1);
-  //clicked$ = new BehaviorSubject<boolean>(false);
+  clicked$ = false;
   constructor() { }
-
 
   preview(card: ICard | undefined){
     this.currentCard = card;
@@ -18,5 +17,3 @@ export class FeedService {
   }
 
 }
-
-

@@ -1,7 +1,5 @@
-import {ChangeDetectionStrategy, Component, Inject, Input, OnInit} from '@angular/core';
 import {CARDS} from "../../mock/card.mock";
-
-
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-feed',
@@ -11,10 +9,13 @@ import {CARDS} from "../../mock/card.mock";
 })
 export class FeedComponent implements OnInit {
   public cards = [...CARDS];
-  // public cardProduct: ICard[] = [];
- // clicked: boolean = false;
+  clicked: boolean = true;
 
   constructor() { }
+
+  handleClick(newValue: boolean) {
+    this.clicked = newValue;
+  }
 
   ngOnInit(): void {
   }

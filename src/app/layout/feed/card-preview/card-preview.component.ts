@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FeedService} from "../feed.service";
 import {ICard} from "../../../mock/card.interface";
 
@@ -10,9 +10,9 @@ changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardPreviewComponent implements OnInit {
   card$ = this.feedService.currentCard$;
-  //clicked$ = this.feedService.clicked$;
-  //@Input() clicked?: boolean;
-  clicked?:boolean= false;
+  @Input() clicked?: boolean;
+  @Output() newItemEvent = new EventEmitter<boolean>();
+
 
   constructor(
     private feedService:FeedService,
@@ -20,16 +20,13 @@ export class CardPreviewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //console.log(this.clicked);
   }
-  togglePopUp():void{
-    //this.feedService.clicked$.next(false);
-    this.clicked = !this.clicked;
-    this.changeDetectorRef.detectChanges();
-  }
-  registeredToCard(){
-      //this.feedService.
 
+  togglePopUp(clicked: boolean):void{
+    this.newItemEvent.emit(clicked);
+  }
+
+  registeredToCard(){
   }
 
 }

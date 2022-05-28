@@ -1,15 +1,19 @@
 <ng-container *ngIf="card">
-<mat-card (click)="previewClick()">
-<mat-card-title>{{card.name}}</mat-card-title>
-  <div *ngIf="card.price as price">
-    <hr>
-<mat-card-subtitle>{{price.price | currency:price.currency}}</mat-card-subtitle>
-  </div>
-  <div class="imgContainer">
-<img mat-card-image src="{{card.img}}" alt="{{card.name}}" class="mat-image">
-  </div>
-</mat-card>
+  <mat-card (click)="previewClick(!clicked)">
+    <mat-card-title>{{ card.name }}</mat-card-title>
+    <div *ngIf="card.price as price">
+      <hr />
+      <mat-card-subtitle>{{
+        price.price | currency: price.currency
+      }}</mat-card-subtitle>
+    </div>
+    <div class="imgContainer">
+      <img
+        mat-card-image
+        src="{{ card.img }}"
+        alt="{{ card.name }}"
+        class="mat-image"
+      />
+    </div>
+  </mat-card>
 </ng-container>
-
-
-
