@@ -4,6 +4,8 @@ import {AuthService} from "../../states/auth.service";
 import {map, Observable, switchMap} from "rxjs";
 import {Users} from "./login.interface";
 import {CookieService} from "ngx-cookie-service";
+import {Appointment} from "../book-now/appointments.interface";
+
 
  const  BASE_URL = `http://localhost:3000`;
 @Injectable({
@@ -22,6 +24,10 @@ export class LoginService {
     params = params.append('email', userEmail)
     return this.httpClient.get<Users[]>(`${BASE_URL}/users`,{params});
 
+  }
+
+  setAppointment(app: Appointment): Observable<Appointment>{
+     return this.httpClient.post<Appointment>(`${BASE_URL}/appointments`,app);
   }
 
   login(user: string): Observable<any> {

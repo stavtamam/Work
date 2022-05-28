@@ -24,11 +24,11 @@ export class BookNowComponent implements OnInit {
  });
   users$: Observable<Users[]> = this.loginService.getUser(this.cookieService.get('userEmail'));
 
+
   header = "book your dogs' appointment";
   btn = {
     submit: "Book"
   }
-  date = new Date(this.myForm.value.datePick);
 
     constructor(
       private formBuilder: FormBuilder,
@@ -43,9 +43,10 @@ export class BookNowComponent implements OnInit {
       "name:",this.myForm.value.username,
       "email:", this.myForm.value.email,
       "select:", this.myForm.value.select.name,
-      "date:", this.date,
+      "date:", this.myForm.value.datePick,
       "time:", this.myForm.value.time
     );
+
 
   }
 

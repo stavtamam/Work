@@ -4,7 +4,12 @@
     <a routerLink="">Home</a>
     <a routerLink="feed">Feed</a>
     <a routerLink="book-now">Book Now</a>
-    <a routerLink="appointments">My Appointments</a>
     <a routerLink="contact">Contact</a>
+    <ng-container *ngIf="isLoggedIn() else logIn">
+    <a (click)="logOut()">Log Out</a>
+    </ng-container>
+    <ng-template #logIn>
+      <a routerLink="login">Log In</a>
+    </ng-template>
   </nav>
 </details>

@@ -9,7 +9,7 @@ import {CookieService} from "ngx-cookie-service";
 })
 export class AuthService {
 
-  constructor(cookieService: CookieService) {
+  constructor(private cookieService: CookieService) {
   }
 
   private user$: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
@@ -23,6 +23,11 @@ export class AuthService {
 
   setUser(user: string | null) {
     this.user$.next(user);
+  }
+
+  logOut(){
+    this.cookieService.deleteAll();
+    this.user$.next(null);
   }
 
   isLogin$(): Observable<boolean> {
