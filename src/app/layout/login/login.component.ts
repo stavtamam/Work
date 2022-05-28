@@ -6,6 +6,7 @@ import {AuthService} from "../../states/auth.service";
 import {LoginService} from "./login.service";
 import {Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,7 +28,11 @@ export class LoginComponent implements OnInit {
     register: "Register"
   }
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private authService: AuthService, private router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private loginService: LoginService,
+    private authService: AuthService,
+    private router: Router) {
   }
 
   ngOnInit(): void {

@@ -10,4 +10,5 @@ export interface ICard {
   price?:IPrice;
   img?:string;
   description:string;
+  time: string;
 }

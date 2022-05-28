@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import {BookNowComponent} from "./book-now.component";
 import {RouterModule} from "@angular/router";
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {DogDatePickerModule} from "@dog-style";
+import {DogDatePickerModule, DogInputModule, SelectInputModule, TimePickerModule} from "@dog-style";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatButtonModule} from "@angular/material/button";
 
 
 
@@ -17,7 +18,11 @@ import {ReactiveFormsModule} from "@angular/forms";
     RouterModule.forChild([{path: '', component: BookNowComponent}]),
     MatFormFieldModule,
     DogDatePickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DogInputModule,
+    MatButtonModule,
+    TimePickerModule,
+    SelectInputModule
 
   ],
   exports: [

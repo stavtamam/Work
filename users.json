@@ -2,11 +2,13 @@
   "users": [
     {
       "id": 1,
+      "name": "stav",
       "email": "stavtamam@gmail.com",
       "password": "12345"
     },
     {
       "id": 2,
+      "name": "stav2",
       "email": "stavtamam@hibob.io",
       "password": "Tutiti1997"
     }

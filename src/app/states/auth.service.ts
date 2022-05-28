@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, map, Observable, ReplaySubject, retry} from "rxjs";
 import {Users} from "../layout/login/login.interface";
+import {CookieService} from "ngx-cookie-service";
 
 
 @Injectable({
@@ -8,7 +9,7 @@ import {Users} from "../layout/login/login.interface";
 })
 export class AuthService {
 
-  constructor() {
+  constructor(cookieService: CookieService) {
   }
 
   private user$: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);

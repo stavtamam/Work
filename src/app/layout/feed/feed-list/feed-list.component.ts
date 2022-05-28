@@ -1,10 +1,8 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
-import {CARDS} from "./card.mock";
-import {ICard} from "./card.interface";
+import {ICard} from "../../../mock/card.interface";
 import {AppService} from "../../../app.service";
 import {FeedService} from "../feed.service";
 import {MatDialog} from "@angular/material/dialog";
-import {CardPreviewComponent} from "../card-preview/card-preview.component";
 
 @Component({
   selector: 'app-feed-list',
@@ -12,6 +10,8 @@ import {CardPreviewComponent} from "../card-preview/card-preview.component";
   styleUrls: ['./feed-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
+
 export class FeedListComponent implements OnInit {
   @Input() card?: ICard;
   //@Input() clicked?: boolean;

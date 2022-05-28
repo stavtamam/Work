@@ -26,7 +26,7 @@ export class DogDatePickerComponent implements OnInit, ControlValueAccessor, OnD
 
   @Input() label!:string;
   @Input() hint!: string;
-  @Input() appearance: MatFormFieldAppearance = 'fill';
+  @Input() appearance: MatFormFieldAppearance = 'outline';
   onChange = (value:any) => {}
   min!: Date;
   max!: Date;

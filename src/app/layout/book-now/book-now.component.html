@@ -1,10 +1,61 @@
 <h1>{{header | titlecase}}</h1>
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-<dog-date-picker
-  [label]="'Pick a Date'"
-  [hint]="'MM/DD/YYYY'"
-  formControlName="datePick"
-></dog-date-picker>
-</form>
+<ng-container *ngIf="users$ | async as user">
+  <div class="wrapper">
+    <div class="container">
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <h2>Hey {{user[0].name | titlecase}} welcome back!</h2>
+        <dog-date-picker
+          [label]="'Pick a Date'"
+          [hint]="'MM/DD/YYYY'"
+          formControlName="datePick"
+        ></dog-date-picker>
+        <dog-input
+          [label]="'Name'"
+          [placeholder]="'👤'"
+          [hint]="'Your user name'"
+          [name]="'User name'"
+          formControlName="username"
+          [validators]="allValidators"
+        >
+        </dog-input>
+        <br>
+        <dog-input
+          [label]="'Email'"
+          [placeholder]="'✉️'"
+          [hint]="'Your email'"
+          [name]="'Email'"
+          formControlName="email"
+          [validators]="emailValidators"
+        >
+        </dog-input>
+        <dog-time-picker
+          [label]="'Pick a Time'"
+          [placeholder]="'🕒'"
+          [hint]="'What Time Do You Prefer?'"
+          [name]="'Time'"
+          [min]="'8:00 am'"
+          [max]="'8:00 pm'"
+          formControlName="time"
+          [validators]="allValidators"
+        ></dog-time-picker>
+        <dog-select-input
+          [label]="'Pick an Appointment'"
+          [placeholder]="'🐶'"
+          [hint]="'Choose your favorite'"
+          [name]="'select'"
+          formControlName="select"
+          [validators]="allValidators"
+        >
+        </dog-select-input>
+        <div class="actions">
+          <button mat-stroked-button color="primary">{{btn.submit}}</button>
+        </div>
+      </form>
+    </div>
+    <div class="container">
+      <h2>You're dogs' appointments:</h2>
+    </div>
+  </div>
 
+</ng-container>
 

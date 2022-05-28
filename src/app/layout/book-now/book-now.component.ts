@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {map, Observable} from "rxjs";
+import {Users} from "../login/login.interface";
+import {LoginService} from "../login/login.service";
+import {CookieService} from "ngx-cookie-service";
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-book-now',
@@ -7,19 +12,41 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   styleUrls: ['./book-now.component.scss']
 })
 export class BookNowComponent implements OnInit {
+  allValidators = [Validators.required];
+  emailValidators = [Validators.required, Validators.email];
  myForm: FormGroup = this.formBuilder.group({
-   datePick: ['']
+   datePick: [''],
+   username: [this.cookieService.get('username') ,this.allValidators],
+   email: [this.cookieService.get('userEmail'), this.emailValidators],
+   time: ['',this.allValidators],
+   select: ['', this.allValidators]
+
  });
+  users$: Observable<Users[]> = this.loginService.getUser(this.cookieService.get('userEmail'));
+
   header = "book your dogs' appointment";
+  btn = {
+    submit: "Book"
+  }
+  date = new Date(this.myForm.value.datePick);
 
-
-    constructor(private formBuilder: FormBuilder) { }
+    constructor(
+      private formBuilder: FormBuilder,
+      private loginService: LoginService,
+      private cookieService: CookieService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
-    console.log(this.myForm.value);
+    console.log(
+      "name:",this.myForm.value.username,
+      "email:", this.myForm.value.email,
+      "select:", this.myForm.value.select.name,
+      "date:", this.date,
+      "time:", this.myForm.value.time
+    );
+
   }
 
 }

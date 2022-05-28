@@ -1,50 +1,44 @@
 import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ValidatorFn} from "@angular/forms";
 import {MatFormFieldAppearance} from "@angular/material/form-field";
+import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ValidatorFn} from "@angular/forms";
 import {Subject, takeUntil} from "rxjs";
+import {CARDS} from "../../../../../src/app/mock/card.mock";
 
 @Component({
-  selector: 'dog-input',
-  templateUrl: './dog-input.component.html',
-  styleUrls: ['./dog-input.component.scss'],
+  selector: 'dog-select-input',
+  templateUrl: './select-input.component.html',
+  styleUrls: ['./select-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
-      useExisting: DogInputComponent
+      useExisting: SelectInputComponent
     }
   ]
 })
-export class DogInputComponent implements OnInit, ControlValueAccessor, OnDestroy {
-  private onDestroy$ = new Subject<void>();
-
+export class SelectInputComponent implements OnInit, ControlValueAccessor, OnDestroy {
+  options = [...CARDS];
+  onDestroy$ = new Subject<void>();
   formControl = new FormControl();
-  error={
-    email: "please enter a valid email",
-    required: "this field is required",
-    minLength: "minimum length is 5 characters"
-  };
-  @Input() label!: string;
-  @Input() hint!: string;
-  @Input() name!: string;
-  @Input() value?: string;
-  @Input() type= 'text';
-  @Input() placeholder!: string;
-  @Input() appearance: MatFormFieldAppearance = 'outline';
-  @Input() validators: ValidatorFn[] = [];
-  onChange = (value: any ) => {};
 
+  selectedValue!: string;
+  @Input() appearance: MatFormFieldAppearance = 'outline';
+  @Input() label!:string;
+  @Input() hint!:string;
+  @Input() placeholder!: string;
+  @Input() validators: ValidatorFn[] = []
+  @Input() name!: string;
+  onChange = (value: any) => {};
 
 
   constructor() { }
-
-
 
   ngOnInit(): void {
     this.setValidators();
     this.registerFormChanges();
   }
+
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
@@ -57,10 +51,6 @@ export class DogInputComponent implements OnInit, ControlValueAccessor, OnDestro
     isDisabled ? this.formControl.disable() : this.formControl.enable();
   }
 
-  writeValue(obj: any): void {
-    this.formControl.setValue(obj)
-  }
-
   private registerFormChanges(){
     this.formControl.valueChanges.pipe(
       takeUntil(this.onDestroy$)
@@ -69,6 +59,11 @@ export class DogInputComponent implements OnInit, ControlValueAccessor, OnDestro
 
   private setValidators() {
     if (this.validators?.length) this.formControl.setValidators(this.validators);
+  }
+
+
+  writeValue(obj: any): void {
+    this.formControl.setValue(obj)
   }
 
   ngOnDestroy(): void {

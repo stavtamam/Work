@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject, Input, OnInit} from '@angular/core';
-import {CARDS} from "./feed-list/card.mock";
+import {CARDS} from "../../mock/card.mock";
 
 
 

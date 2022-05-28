@@ -1,0 +1,18 @@
+<mat-form-field [appearance]="appearance">
+  <mat-label>{{label}}</mat-label>
+  <input matInput
+         [name]="name"
+         [(ngModel)]="selectedTime"
+         [ngxMatTimepicker]="pickerA"
+         [placeholder]="placeholder"
+         [min]="min"
+         [max]="max"
+         readonly [formControl]="formControl" />
+  <mat-icon matSuffix
+            (click)="pickerA.open()">
+  </mat-icon>
+  <mat-hint>{{hint}}</mat-hint>
+</mat-form-field>
+<ngx-mat-timepicker #pickerA [minutesGap]="10"></ngx-mat-timepicker>
+
+
