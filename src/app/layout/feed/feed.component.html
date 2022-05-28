@@ -1,8 +1,16 @@
 <h1>Dog Salon</h1>
 <div class="cardscontainer">
-  <app-feed-list *ngFor="let card of cards" [card]="card"></app-feed-list>
+  <app-feed-list
+    (newItemEvent)="handleClick($event)"
+    [clicked]="clicked"
+    *ngFor="let card of cards"
+    [card]="card"
+  ></app-feed-list>
   <ng-container>
-    <app-card-preview></app-card-preview>
+    <app-card-preview
+      (newItemEvent)="handleClick($event)"
+      [clicked]="clicked"
+    ></app-card-preview>
   </ng-container>
 </div>
 <div class="book-now">

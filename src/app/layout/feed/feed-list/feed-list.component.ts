@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {ICard} from "../../../mock/card.interface";
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AppService} from "../../../app.service";
 import {FeedService} from "../feed.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -14,7 +14,9 @@ import {MatDialog} from "@angular/material/dialog";
 
 export class FeedListComponent implements OnInit {
   @Input() card?: ICard;
-  //@Input() clicked?: boolean;
+  @Input() clicked?: boolean;
+  @Output() newItemEvent = new EventEmitter<boolean>();
+
   constructor(
     private appService:AppService,
     private feedService:FeedService ,
@@ -28,10 +30,10 @@ export class FeedListComponent implements OnInit {
   // public get current():ICard {
   //   return this.feedService?.currentCard as ICard;
   // }
-  previewClick() {
+
+  previewClick(clicked: boolean) {
+    this.newItemEvent.emit(clicked);
     this.feedService.preview(this.card);
-    //this.clicked = true;
-    //console.log(this.clicked);
     this.changeDetectorRef.detectChanges();
   }
 
